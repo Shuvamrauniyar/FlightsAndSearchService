@@ -33,4 +33,7 @@
 }
  ```
 
+<<<<<<< HEAD
 once ypu have added your DB config as listed above ,go to src folder from your terminal and execute `npx sequelize db:create`
+=======
+>>>>>>> fecece0de12c0a89d284cf35f306544edd0afdb6
