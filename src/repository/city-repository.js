@@ -13,7 +13,7 @@ class CityRepository{
     }
 //why try catch ,to handle the situation like if a user wants
 //to delete the data which doesnot exit in databases
-    async deleteCity({ cityId })
+    async deleteCity(cityId)
     {
         try {
            await City.destroy({
@@ -28,7 +28,7 @@ class CityRepository{
         }
     }
    
-    async updateCity(cityId, data) {
+    async updateCity(cityId, data) { //data( is anv   object) = {name : "Pragyaraj"}
           try {
             const city= await City.update(data ,{
                 where :{
@@ -45,8 +45,8 @@ class CityRepository{
     {
         try{
             //const city = await City.findOne();
-            const city = await City.findByPK(cityId);
-            return City;
+            const city = await City.findByPk(cityId);
+            return city;
         } catch(error) {
             console.log("Something went wrong in the repository layer");
             throw {error};
