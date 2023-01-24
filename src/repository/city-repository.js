@@ -1,3 +1,4 @@
+const {Op} = require('sequelize');
 const {City} = require('../models/index');
 
 //these are done by reading sequelize docs,these are object oriented code with the help of ORM
@@ -60,9 +61,20 @@ class CityRepository{
         }
     }
 
-    async getAllCities()
+    async getAllCities(filter) //filter can be empty also ,if filter is empty we can return all of the cities
     {
         try {
+            if(filter.name)
+            {
+                const cities = await City.findAll({
+                    where : {
+                        name : {
+                            [Op.startsWith] : filter.name
+                        }
+                    }
+                });
+                return cities;
+            }
             const cities = await City.findAll();
             return cities;
         } catch (error) {
