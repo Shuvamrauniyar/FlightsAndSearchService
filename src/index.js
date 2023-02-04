@@ -14,7 +14,7 @@ const ApiRoutes = require('./routes/index');
 //const db= require('./models/index');
 
 const db = require('./models/index');
-//const airport = require("./models/airport");
+const {Airplane} = require("./models/index");
 //const city = require('./models/city');
 
 const {City,Airport} = require('./models/index');
@@ -34,33 +34,13 @@ const setupAndStartServer = async () => {
         //console.log(process.env);
       //  const repo = new CityRepository();
        // repo.createCity({ name: "New Delhi"});
-
-
-
        if(process.env.SYNC_DB){
         db.sequelize.sync({alter: true});
 
        }
-       const city = await City.findOne({
-        where: {
-            id: 577
-        }
-       });
-       const airports = await city.getAirports();
-
-    //    const newAirport = await Airport.create({
-    //     name: 'Jindal Vijaynagar Airport',
-    //     cityId:576
+    //    await Airplane.create({
+    //     modelNumber: "Bombarder CRJ" //here we dont define capacity ,it will take default value of capacity
     //    });
-
-    const newAirport = await Airport.findOne({
-        where: {
-            id: 5
-        }
-    });
-    await city.addAirport(newAirport);
-
-
     });
 
 }
