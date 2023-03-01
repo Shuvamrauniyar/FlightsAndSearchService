@@ -19,7 +19,7 @@ module.exports = {
        createdAt: new Date(),
        updatedAt: new Date()
       },
-      {
+      { 
        modelNumber: 'Boeing 777',
        capacity: 400,
        createdAt: new Date(),
