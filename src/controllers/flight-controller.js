@@ -1,7 +1,7 @@
 const {FlightService} = require('../services/index');
 
 const flightService = new FlightService();
-
+const { SuccessCodes } = require('../utils/error-codes'); 
 const create = async (req,res) => {
     try {
         //flitering out the request body to avoid unnecessary data
@@ -15,7 +15,7 @@ const create = async (req,res) => {
             price: req.body.price 
         }
         const flight = await flightService.createFlight(flightRequestData);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data:flight,
             success: true,
             err: {},
@@ -23,7 +23,7 @@ const create = async (req,res) => {
         })
     } catch (error) {
         console.log(error);
-      return res.status(500).json({
+      return res.status(500).json({ //not updating this 500 ,we will see this when we will doing exception handling gracefully
         data:{},
         success: false,
         message: 'Not able to update a flight' ,
@@ -34,7 +34,7 @@ const create = async (req,res) => {
 const get = async (req,res) => {
     try {
         const response = await flightService.getFlight(req.params.id);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data:response,
             success: true,
             err: {},

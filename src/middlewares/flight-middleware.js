@@ -1,4 +1,5 @@
 
+const { ClientErrorCodes } = require('../utils/error-codes'); 
 const validateCreateFlight = (req,res,next) => {
     //if any of the below data is missing then flight cannot be created in database
     if(
@@ -10,7 +11,7 @@ const validateCreateFlight = (req,res,next) => {
         !req.body.departureTime ||
         !req.body.price 
     ) {
-        return res.status(400).json ({ //400 means bad request from client side
+        return res.status(ClientErrorCodes.BAD_REQUEST).json ({ //400 means bad request from client side
             data: {},
             success: false,
             message: 'Invalid request body to create flight',
