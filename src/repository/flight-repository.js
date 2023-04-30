@@ -1,7 +1,13 @@
 const {Flights} = require('../models/index');
+const CrudRepository = require('./crud-repository');
 const {Op} = require('sequelize');
 
-class FlightRepository {
+class FlightRepository extends CrudRepository{
+    //for update flight i am using the update api from crud-repo
+    constructor()
+    {
+        super(Flights);
+    }
 
     #createFilter(data){
         let filter = {};

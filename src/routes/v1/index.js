@@ -17,10 +17,11 @@ router.post( '/flights',
 FlightMiddlewares.validateCreateFlight,
  FlightController.create
 );
+router.patch('/flights/:id',FlightController.update);
+
 
 router.get('/flights/:id',FlightController.get);
 router.get('/flights', FlightController.getAll);
-
 router.post('/airports',AirportController.create);
 
 module.exports = router;

@@ -36,7 +36,6 @@ const setupAndStartServer = async () => {
        // repo.createCity({ name: "New Delhi"});
        if(process.env.SYNC_DB){
         db.sequelize.sync({alter: true});
-
        }
     //    await Airplane.create({
     //     modelNumber: "Bombarder CRJ" //here we dont define capacity ,it will take default value of capacity

@@ -45,7 +45,7 @@ class CrudRepository{
             throw error;
         }
     }
-    async destroy(data) {
+    async destroy(modelId) {
         try {
             await this.model.destroy({
                 where: {
